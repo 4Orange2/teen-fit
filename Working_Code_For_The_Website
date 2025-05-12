@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeenFit</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Header Styles --- */
+        .header {
+            background-color: #EAD40E; /* Yellow header */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between; /* Push logo and menu to the edges */
+            align-items: center; /* Vertically center items */
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000; /* Black logo text */
+            margin-left: auto; /* Push logo to the right */
+        }
+
+        .menu-icon {
+            width: 52px; /* As per your image */
+            height: 52px;
+            cursor: pointer;
+            background-image: url("https://ps.w.org/menu-organizer/assets/icon-256x256.jpg?rev=3202278"); /* Set the image as the background */
+            background-size: cover; /* Ensure the image covers the entire element */
+            background-repeat: no-repeat; /* Remove the default button border */
+        }
+
+        /* --- Main Content Styles --- */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 67px); /* Subtract header height from full viewport height */
+        }
+
+        #menu-view, #about-view, #structured-view, #landing-view, #analytics-view, #exercises-view {
+            display: none; /* Initially hide all views */
+            padding: 20px;
+            flex-grow: 1; /* Allow content to take up remaining space */
+        }
+
+        #menu-view {
+            background-color: #000;
+        }
+
+        #about-view{
+            background-color: #FFF;
+        }
+
+        .show {
+            display: flex; /* Show the active view */
+        }
+
+        /* --- Menu Styles (as in Menu_style.css) --- */
+        .menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .menu .div {
+            background-color: #000000;
+            overflow: hidden;
+            width: 231px;
+            height: 380px;
+            position: relative;
+        }
+
+        .menu .overlap {
+            position: absolute;
+            width: 231px;
+            height: 50px;
+            top: 330px;
+            left: 0;
+            cursor: pointer; /* Keep cursor pointer for TeenFit */
+        }
+
+        .menu .rectangle {
+            width: 231px;
+            height: 50px;
+            top: 0;
+            left: 0;
+            background-color: #ead40e;
+            position: absolute;
+        }
+
+        .menu .text-wrapper {
+            position: absolute;
+            top: 7px;
+            left: 90px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 15.8px;
+            letter-spacing: 0;
+            line-height: 34.7px;
+            white-space: nowrap;
+        }
+
+        .menu .polygon {
+            left: 61px;
+            position: absolute;
+            width: 28px;
+            height: 32px;
+            top: 9px;
+        }
+
+        .menu .img {
+            left: 135px;
+            position: absolute;
+            width: 28px;
+            height: 32px;
+            top: 9px;
+        }
+
+        .menu .text-wrapper-2 {
+            left: 74px;
+            position: absolute;
+            width: 24px;
+            top: 7px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 15.8px;
+            letter-spacing: 0;
+            line-height: 34.7px;
+            white-space: nowrap;
+        }
+
+        .menu .text-wrapper-3 {
+            left: 138px;
+            position: absolute;
+            width: 24px;
+            top: 7px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 15.8px;
+            letter-spacing: 0;
+            line-height: 34.7px;
+            white-space: nowrap;
+        }
+
+        .menu .other-unique-name { /* Targeting the Analytics tab */
+            position: absolute;
+            width: 231px;
+            height: 10px;
+            top: -1px;
+            left: 13px;
+            cursor: pointer;
+        }
+
+        .menu .rectangle-2 {
+            position: absolute;
+            width: 231px;
+            height: 43px;
+            top: 1px;
+            left: 0;
+            background-color: #691869;
+        }
+
+        .menu .text-wrapper-4 {
+            position: absolute;
+            width: 231px;
+            height: 43px;
+            top: 0;
+            left: 0;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #51bda9;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: 66px;
+            white-space: nowrap;
+        }
+
+        .menu .unique-name { /* Targeting the Exercises tab using its ID */
+            position: absolute;
+            width: 231px;
+            height: 2px;
+            top: 10px;
+            left: 13px;
+        }
+
+        .menu .rectangle-3 {
+            width: 231px;
+            height: 43px;
+            top: 44px;
+            left: 0;
+            background-color: #c21010;
+            position: absolute;
+        }
+
+        .menu .text-wrapper-5 {
+            position: absolute;
+            width: 231px;
+            height: 43px;
+            top: 43px;
+            left: 0;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #51bda9;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: 66px;
+            white-space: nowrap;
+        }
+
+        .menu #about-menu-item { /* Targeting the About tab */
+            position: absolute;
+            width: 233px;
+            height: 45px;
+            top: 232px;
+            left: 13px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .menu .rectangle-4 {
+            width: 231px;
+            height: 43px;
+            top: 2px;
+            left: 2px;
+            background-color: #000000;
+            position: absolute;
+        }
+
+        .menu .text-wrapper-7 {
+            position: absolute;
+            width: 231px;
+            height: 43px;
+            top: 0;
+            left: 0;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #51bda9;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: 66px;
+            white-space: nowrap;
+        }
+
+        .menu #structured-menu-item { /* Targeting the Structured tab */
+            position: absolute;
+            width: 177px;
+            height: 43px;
+            top: 101px;
+            left: 54px;
+            cursor: pointer; /* Add cursor style to indicate clickable */
+            z-index: 1; /* Ensure the overlap is clickable */
+        }
+
+        .menu .rectangle-5 {
+            width: 177px;
+            height: 36px;
+            top: 5px;
+            left: 0;
+            background-color: #ead40e;
+            position: absolute;
+            z-index: 0;
+        }
+
+        .menu .text-wrapper-6 {
+            position: absolute;
+            width: 177px;
+            height: 43px;
+            top: 0;
+            left: 0;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: 66px;
+            white-space: nowrap;
+        }
+
+        .menu .overlap-group-1 { /* Targeting the Unstructured tab */
+            position: absolute;
+            width: 177px;
+            height: 43px;
+            top: 157px;
+            left: 54px;
+            cursor: pointer; /* Assuming you want cursor pointer here too */
+        }
+
+        .menu .rectangle-6 {
+            width: 177px;
+            height: 36px;
+            top: 4px;
+            left: 0;
+            background-color: #ead40e;
+            position: absolute;
+        }
+
+        /* --- About Styles (as in style.css) --- */
+        .about {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .about .div {
+            background-color: #ffffff;
+            overflow: hidden;
+            width: 1440px;
+            height: 1024px;
+            position: relative;
+        }
+
+        .about .frame {
+            position: absolute;
+            width: 1714px;
+            height: 759px;
+            top: 1783px;
+            left: -215px;
+            background-color: #ffffff;
+        }
+
+        .about .founders-aditya-nair {
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 25px;
+            text-align: left;
+            letter-spacing: 0;
+            line-height: 66px;
+        }
+
+        /* --- Structured Styles --- */
+        .structured {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .structured .div {
+            background-color: #ffffff;
+            overflow: hidden;
+            width: 1440px;
+            height: 1024px;
+            position: relative;
+        }
+
+        .structured .frame {
+            position: absolute;
+            width: 1714px;
+            height: 759px;
+            top: 1783px;
+            left: -215px;
+            background-color: #ffffff;
+        }
+
+        .structured .structured-exercise {
+            position: absolute;
+            width: 574px;
+            top: 88px;
+            left: 39px;
+            font-family: "Montserrat-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 25px;
+            letter-spacing: 0;
+            line-height: 66px;
+        }
+
+        .structured .span {
+            font-family: "Montserrat-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 25px;
+            letter-spacing: 0;
+            line-height: 66px;
+        }
+
+        .structured .text-wrapper-4 {
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+        }
+
+        .structured .goals-teenfit {
+            position: absolute;
+            width: 494px;
+            height: 314px;
+            top: 124px;
+            left: 786px;
+            object-fit: cover;
+        }
+
+        .structured .overlap-2 {
+            position: absolute;
+            width: 585px;
+            height: 570px;
+            top: 441px;
+            left: 762px;
+        }
+
+        .structured .p {
+            position: absolute;
+            width: 585px;
+            top: 0;
+            left: 0;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 25px;
+            letter-spacing: 0;
+            line-height: 66px;
+        }
+
+        .structured .workout-examples {
+            position: absolute;
+            width: 535px;
+            height: 431px;
+            top: 139px;
+            left: 24px;
+            object-fit: cover;
+        }
+        .landing-page {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .landing-page .div {
+            background-color: #ffffff;
+            overflow: hidden;
+            width: 1440px;
+            height: 1024px;
+            position: relative;
+        }
+        
+        .landing-page .overlap-group {
+            position: absolute;
+            width: 1440px;
+            height: 67px;
+            top: 0;
+            left: 0;
+            background-color: #ead40e;
+        }
+        
+        .landing-page .overlap {
+            position: absolute;
+            width: 124px;
+            height: 43px;
+            top: 9px;
+            left: 1307px;
+        }
+        
+        .landing-page .text-wrapper {
+            position: absolute;
+            top: 0;
+            left: 35px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 19.3px;
+            letter-spacing: 0;
+            line-height: 42.6px;
+            white-space: nowrap;
+        }
+        
+        .landing-page .polygon {
+            left: 0;
+            position: absolute;
+            width: 34px;
+            height: 39px;
+            top: 3px;
+        }
+        
+        .landing-page .img {
+            left: 90px;
+            position: absolute;
+            width: 34px;
+            height: 39px;
+            top: 3px;
+        }
+        
+        .landing-page .text-wrapper-2 {
+            position: absolute;
+            width: 30px;
+            top: 0;
+            left: 16px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3px;
+            letter-spacing: 0;
+            line-height: 42.6px;
+            white-space: nowrap;
+        }
+        
+        .landing-page .text-wrapper-3 {
+            position: absolute;
+            width: 30px;
+            top: 0;
+            left: 95px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3px;
+            letter-spacing: 0;
+            line-height: 42.6px;
+            white-space: nowrap;
+        }
+        
+        .landing-page .menu-hamburger-web {
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            top: 5px;
+            left: 13px;
+            object-fit: cover;
+        }
+        
+        .landing-page .frame {
+            position: absolute;
+            width: 1714px;
+            height: 759px;
+            top: 1783px;
+            left: -215px;
+            background-color: #ffffff;
+        }
+        
+        .landing-page .overlap-2 {
+            position: absolute;
+            width: 1450px;
+            height: 842px;
+            top: 105px;
+            left: 0;
+        }
+        
+        .landing-page .p {
+            position: absolute;
+            width: 941px;
+            top: 75px;
+            left: 39px;
+            font-family: "Montserrat-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 25px;
+            letter-spacing: 0;
+            line-height: 66px;
+        }
+        
+        .landing-page .why-teens-teens-have {
+            position: absolute;
+            width: 1450px;
+            top: 431px;
+            left: 40px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 400;
+            color: #ff0909;
+            font-size: 25px;
+            letter-spacing: 0;
+            line-height: 66px;
+        }
+        
+        .landing-page .span {
+            font-weight: 700;
+        }
+        
+        .landing-page .text-wrapper-4 {
+            font-family: "Montserrat-Regular", Helvetica;
+        }
+        
+        .landing-page .text-wrapper-5 {
+            font-family: "Montserrat-Italic", Helvetica;
+            font-style: italic;
+        }
+        
+        .landing-page .text-wrapper-6 {
+            position: absolute;
+            width: 613px;
+            top: 0;
+            left: 55px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #51bda9;
+            font-size: 50px;
+            letter-spacing: 0;
+            line-height: 66px;
+            white-space: nowrap;
+        }
+
+        .analytics {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .analytics .div {
+            background-color: #ffffff;
+            overflow: hidden;
+            width: 1440px;
+            height: 1024px;
+            position: relative;
+        }
+
+        .analytics .overlap-group {
+            position: absolute;
+            width: 1440px;
+            height: 67px;
+            top: 0;
+            left: 0;
+            background-color: #ead40e;
+        }
+
+        .analytics .overlap {
+            position: absolute;
+            width: 124px;
+            height: 43px;
+            top: 9px;
+            left: 1307px;
+        }
+
+        .analytics .text-wrapper {
+            position: absolute;
+            top: 0;
+            left: 16px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 19.3рх;
+            letter-spacing: e;
+            line-height: 42.6рx;
+            white-space: nowrap;
+        }
+
+        .analytics .polygon {
+            left: 0;
+            position: absolute;
+            width: 34px;
+            height: 39px;
+            top: 3px;
+        }
+
+        .analytics .img {
+            left: 90рх;
+            position: absolute;
+            width: 34px;
+            height: 39px;
+            top: 3pх;
+        }
+
+        .analytics .text-wrapper-2 {
+            left: 16pх;
+            position: absolute;
+            width: 3ерх;
+            top: 0;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3px;
+            letter-spacing: e;
+            line-height: 42.6px;
+            white-space: nowrap;
+        }
+            
+        .analytics .text-wrapper-3 {
+            left: 95px;
+            position: absolute;
+            width: 30рх;
+            top: 0;
+            font-family: "Montserrat-Bold", Helvetica; font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3pх;
+            letter-spacing: e;
+            line-height: 42.6px;
+            white-space: nowrap;
+        }
+
+        .analytics .menu-hamburger-web {
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            top: 5px;
+            left: 13рx;
+            object-fit: cover;
+        }
+
+        .analytics .frame {
+            position: absolute;
+            width: 1714px;
+            height: 759px;
+            top: 1783px;
+            left: -215px;
+            background-color: #ffffff;
+        }
+
+        .analytics .overlap-2 {
+            position: absolute;
+            width: 1136px;
+            height: 430px;
+            top: 106px;
+            left: 152px;
+        }
+
+        .analytics .image {
+            width: 793px;
+            height: 430px;
+            top: e;
+            left: 0;
+            position: absolute;
+            object-fit: cover;
+        }
+
+        .analytics .p {
+            position: absolute;
+            width: 569px;
+            top: 214px;
+            left: 567px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3pх;
+            letter-spacing: e;
+            line-height: 42.60px;
+            text-decoration: underline;
+        }
+
+        .analytics .image-2 {
+            width: 726px;
+            height: 380px;
+            top: 625px;
+            left: 150px;
+            position: absolute;
+            object-fit: cover;
+        }
+
+        .analytics .text-wrapper-4 {
+            position: absolute;
+            width: 236px;
+            top: 762px;
+            left: 973px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3px;
+            letter-spacing: e;
+            line-height: 42.6px;
+            text-decoration: underline;
+        }
+
+        .exercises {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .exercises .div {
+            background-color: #ffffff;
+            overflow: hidden;
+            width: 1440px;
+            height: 1024px;
+            position: relative;
+        }
+
+
+        .exercises .overlap {
+        position: absolute;
+        width: 124px;
+        height: 43px;
+        top: 9pх;
+        left: 1307px;
+        }
+
+        .exercises .text-wrapper {
+        position: absolute;
+        top: 0;
+        left: 16pх;
+        font-family: "Montserrat-Bold", Helvetica;
+        font-weight: 700;
+        color: #000000;
+        font-size: 19.3px;
+        letter-spacing: 0;
+        line-height: 42.брх;
+        white-space: nowrap;
+        }
+
+        .exercises .polygon {
+            left: 0;
+            position: absolute;
+            width: 34px;
+            height: 39px;
+            top: 3px;
+        }
+
+        .exercises .img {
+        left: 90px;
+        position: absolute;
+        width: 34px;
+        height: 39px;
+        top: 3px;
+        }
+
+        .exercises .text-wrapper-2 {
+            left: 16рх;
+            position: absolute;
+            width: 30px;
+            top: 0;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3px;
+            letter-spacing: 0;
+            line-height: 42.6px;
+            white-space: nowrap;
+        }
+
+        .exercises .text-wrapper-3 {
+            left: 95px;
+            position: absolute;
+            width: 30px;
+            top: 0;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3pх;
+            letter-spacing: 0;
+            line-height: 42.6рх;
+            white-space: nowrap;
+        }
+
+        .exercises .menu-hamburger-web {
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            top: 5pх;
+            left: 13рx;
+            object-fit: cover; 
+        }
+
+        .exercises .frame {
+            position: absolute;
+            width: 1714px;
+            height: 759px;
+            top: 1783px;
+            left: -215px;
+            background-color: #ffffff;
+        }
+        .exercises .p {
+            position: absolute;
+            width: 482px;
+            top: 110px;
+            left: 55px;
+            font-family: "Montserrat-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 25px;
+            letter-spacing: 0;
+            line-height: 66px;
+        }
+        .exercises .overlap-2 {
+            position: absolute;
+            width: 529px;
+            height: 81px;
+            top: 710px;
+            left: 39px;
+        }
+
+        .exercises .rectangle {
+            position: absolute;
+            width: 529px;
+            height: 81px;
+            top: 0;
+            left: 0;
+        }
+
+        .exercises .text-wrapper-4 {
+            width: 193px;
+            top: 3pх;
+            left: 16px;
+            color: #c310f0;
+            position: absolute;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            font-size: 25px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 66px;
+            white-space: nowrap;
+        }
+
+        .exercises .text-wrapper-5 {
+            width: 193px;
+            top: 3pх;
+            left: 322px;
+            color: #c310f0;
+            position: absolute;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            font-size: 25px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 66px;
+            white-space: nowrap;
+        }
+
+        .exercises .structured-sport {
+            position: absolute;
+            width: 550px;
+            height: 400px;
+            top: 153px;
+            left: 819px;
+            object-fit: cover;
+        }
+        .exercises .text-wrapper-6 {
+            width: 411px;
+            top: 83px;
+            left: 888px;
+            color: #000000;
+            position: absolute;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            font-size: 25px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 66px;
+            white-space: nowrap;
+        }
+
+        .exercises .text-wrapper-7 {
+            width: 411px;
+            top: 609px;
+            left: 888px;
+            color: #000000;
+            position: absolute;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            font-size: 25px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 66p;
+            white-space: nowrap;
+        }
+
+        .exercises .sructured-sport {
+            position: absolute;
+            width: 600px;
+            height: 314px;
+            top: 687px;
+            left: 794px;
+            object-fit: cover;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <img id="menu-icon" class="menu-icon" src="https://ps.w.org/menu-organizer/assets/icon-256x256.jpg?rev=3202278" alt="Menu">
+        <div class="logo">TeenFit</div>
+    </header>
+    <main class="main-content">
+        <div id="menu-view" class="menu">
+            <div class="div">
+                <div id="exercises-menu-item" class ="unique-name">
+                    <div class="rectangle-3"></div>
+                    <div class="text-wrapper-5">Exercises</div>
+                </div>
+                <div id="analytics-menu-item" class="other-unique-name">
+                    <div class="rectangle-2"></div>
+                    <div class="text-wrapper-4">Analytics</div>
+                </div>
+                <div id="teenfit-menu-item" class="overlap">
+                    <div class="rectangle"></div>
+                    <div class="text-wrapper"> eenFi</div>
+                    <img class="polygon" src="./Polygon_1.svg" />
+                    <img class="img" src="./Polygon_2.svg" />
+                    <div class="text-wrapper-2">T</div>
+                    <div class="text-wrapper-3">T</div>
+                </div>
+                <div id="about-menu-item" class="overlap-3">
+                    <div class="rectangle-4"></div>
+                    <div class="text-wrapper-7">About</div>
+                </div>
+                <div id="structured-menu-item" class="overlap-4">
+                    <div class="rectangle-5"></div>
+                    <div class="text-wrapper-6">Structured</div>
+                </div>
+                <div class="overlap-group-1">
+                    <div class="rectangle-6"></div>
+                    <div class="text-wrapper-6">Unstructured</div>
+                </div>
+            </div>
+        </div>
+        <div id="about-view" class="about">
+            <div class="div">
+                <div class="frame"></div>
+                <div class="founders-aditya-nair">
+                    Founders:<br />
+                    Aditya Nair<br />
+                    Rashed Sadjad
+                </div>
+            </div>
+        </div>
+        <div id="structured-view" class="structured">
+            <div class="div">
+                <div class="frame"></div>
+                <p class="structured-exercise">
+                    <span class="span"
+                        >Structured exercise refers more to organized sports, workouts, and timed runs. Teens who want to improve
+                        their physical strength should definitely consider a little structured exercise.<br
+                    /></span>
+                    <span class="text-wrapper-4"><br /></span>
+                    <span class="span"
+                        >As we believe that giving you more freedom is the best option, we don’t have pre-defined workouts, because
+                        that’s not proven to work well for teens. We suggest using our analytics page in order measure various
+                        components of your physical activity (e.g. your conditioning/runs)
+                    </span>
+                </p>
+                <img class="goals-teenfit" src="./Goals_TeenFit.jpg" />
+                <div class="overlap-2">
+                    <p class="p">You can set goals regarding your exercise and what you want to improve!</p>
+                    <img class="workout-examples" src="./Workout_Examples.jpg" />
+                </div>
+            </div>
+        </div>
+        <div id="landing-view" class="landing-page">
+            <div class="frame"></div>
+            <div class="overlap-2">
+            <p class="p">
+                Welcome to TeenFit! A website that can be used by teens to help them gain their daily physical activity in a
+                fun, routine way. With free analytics systems to analyze various aspects of your physical activity, advice
+                to keep with long-term exercise habits, and teen-geared exercise ideas, this website is one that teens
+                around the world have long been waiting for.
+            </p>
+            <p class="why-teens-teens-have">
+                <span class="span">&nbsp;&nbsp;Why Teens?<br /></span>
+                <span class="text-wrapper-4">Teens have long wanted a software aimed to help </span>
+                <span class="text-wrapper-5">them, </span>
+                <span class="text-wrapper-4"
+                >so they aren’t forced to use adult-based platforms<br />Starting early can help prevent problems in later
+                life<br />Teens are at that age where they’re able to start gaining some independence; they’re able to
+                work with these apps effectively<br />Suicide rates and mental health disorders are high among teens,
+                physical activity can act as a prevention mechanism</span
+                >
+            </p>
+            <div class="text-wrapper-6">TeenFit</div>
+            </div>
+        </div>
+        <div id="analytics-view" class="analytics">
+            <div class="div">
+              <div class="frame"></div>
+              <div class="overlap-2">
+                <img class="image" src="./Structured_vs_Unstructured_Graph.png" />
+                <a
+                  href="https://sites.google.com/view/structuredvsunstructured/home"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><p class="p">
+                    How is your structured vs. unstructured activity. Are you getting your heart rate up enough? Are you
+                    reaching the 60 minutes?
+                  </p></a
+                >
+              </div>
+              <img class="image-2" src="./Lap_vs_Time_For_Lap_Sample.png" />
+              <a href="https://sites.google.com/view/lapvstimeperlap/home" target="_blank" rel="noopener noreferrer"
+                ><p class="text-wrapper-4">
+                  Put in your data to find out your running trend. Did you slow down at the end, maybe just slightly?
+                </p></a
+              >
+            </div>
+          </div>    
+        </div>
+        <div id="exercises-view" class="exercises">
+            <div class="div">
+                <div class="frame"></div>
+                <p class="p">
+                    According to a recent study focusing on improving
+                    of exercise. Every teen is different, one might
+                    structured ones. So, which one do you like?
+                </p>
+                <div class="overlap-2">
+                    <img class="rectangle" src="./Rectangle_11.svg"/>
+                    <div class="text-wrapper-4">Structured</div>
+                    <div class="text-wrapper-5">Unstructured</div>
+                </div>
+                <img class="structured-sport" src="./Structured_Sport_Example_1.png"/>
+                <div class="text-wrapper-6">Unstructured sport</div>
+                <div class="text-wrapper-7">Structured sport</div>
+                <img class="sructured-sport" src="./Sructured_Sport_Example_2.png">
+            </div>
+        </div>
+    </main>
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const aboutMenuItem = document.getElementById('about-menu-item');
+        const structuredMenuItem = document.getElementById('structured-menu-item');
+        const teenfitMenuItem = document.getElementById('teenfit-menu-item'); // Add this line
+        const analyticsMenuItem = document.getElementById('analytics-menu-item');
+        const exercisesMenuItem = documnet.getElementById('exercises-menu-item');
+        const menuView = document.getElementById('menu-view');
+        const aboutView = document.getElementById('about-view');
+        const structuredView = document.getElementById('structured-view');
+        const landingView = document.getElementById('landing-view');
+        const analyticsView = document.getElementById('analytics-view');
+        const exercisesView = documnet.getElementById('exercises-view');
+
+        // Initially show the landing view
+        landingView.style.display = 'flex';
+        menuView.style.display = 'none';
+        aboutView.style.display = 'none';
+        structuredView.style.display = 'none';
+        analyticsView.style.display = 'none';
+        exercisesView.style.display = 'none';
+
+        function toggleView(showView, hideView1, hideView2, hideView3, hideView4, hideView5) {
+            showView.style.display = 'flex';
+            hideView1.style.display = 'none';
+            hideView2.style.display = 'none';
+            hideView3.style.display = 'none';
+            hideView4.style.display = 'none';
+            hideView5.style.display = 'none';
+        }
+
+        menuIcon.addEventListener('click', () => toggleView(menuView, aboutView, structuredView, landingView, analyticsView, exercisesView));
+        aboutMenuItem.addEventListener('click', () => toggleView(aboutView, menuView, structuredView, landingView, analyticsView, exercisesView));
+        structuredMenuItem.addEventListener('click', () => toggleView(structuredView, menuView, aboutView, landingView, analyticsView, exercisesView));
+        teenfitMenuItem.addEventListener('click', () => toggleView(landingView, menuView, aboutView, structuredView, analyticsView, exercisesView)); // Add this line
+        analyticsMenuItem.addEventListener('click', () => toggleView(analyticsView, menuView, aboutView, structuredView, landingView, exercisesView)); // Add this line
+        exercisesMenuItem.addEventListener('click', () => toggleView(exercisesView, menuView, aboutView, structuredView, landingView, analyticsView));
+    </script>
+</body>
+</html>
