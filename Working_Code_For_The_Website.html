@@ -191,6 +191,7 @@
             height: 2px;
             top: 10px;
             left: 13px;
+            cursor: pointer;
         }
 
         .menu .rectangle-3 {
@@ -1110,13 +1111,13 @@
         const structuredMenuItem = document.getElementById('structured-menu-item');
         const teenfitMenuItem = document.getElementById('teenfit-menu-item'); // Add this line
         const analyticsMenuItem = document.getElementById('analytics-menu-item');
-        const exercisesMenuItem = documnet.getElementById('exercises-menu-item');
+        const exercisesMenuItem = document.getElementById('exercises-menu-item');
         const menuView = document.getElementById('menu-view');
         const aboutView = document.getElementById('about-view');
         const structuredView = document.getElementById('structured-view');
         const landingView = document.getElementById('landing-view');
         const analyticsView = document.getElementById('analytics-view');
-        const exercisesView = documnet.getElementById('exercises-view');
+        const exercisesView = document.getElementById('exercises-view');
 
         // Initially show the landing view
         landingView.style.display = 'flex';
@@ -1140,7 +1141,7 @@
         structuredMenuItem.addEventListener('click', () => toggleView(structuredView, menuView, aboutView, landingView, analyticsView, exercisesView));
         teenfitMenuItem.addEventListener('click', () => toggleView(landingView, menuView, aboutView, structuredView, analyticsView, exercisesView)); // Add this line
         analyticsMenuItem.addEventListener('click', () => toggleView(analyticsView, menuView, aboutView, structuredView, landingView, exercisesView)); // Add this line
-        exercisesMenuItem.addEventListener('click', () => toggleView(exercisesView, menuView, aboutView, structuredView, landingView, analyticsView));
+        exercisesMenuItem.addEventListener('click', () => toggleView(exercisesView, menuView, aboutView, structuredView, landingView, analyticsView))
     </script>
 </body>
 </html>
