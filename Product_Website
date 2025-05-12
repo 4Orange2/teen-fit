@@ -16,15 +16,13 @@
             background-color: #EAD40E; /* Yellow header */
             padding: 10px 20px;
             display: flex;
-            justify-content: space-between; /* Push logo and menu to the edges */
-            align-items: center; /* Vertically center items */
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #000; /* Black logo text */
             margin-left: auto; /* Push logo to the right */
+            width: 100px;
+            height: 52px;
+            cursor: pointer;
         }
 
         .menu-icon {
@@ -43,7 +41,7 @@
             min-height: calc(100vh - 67px); /* Subtract header height from full viewport height */
         }
 
-        #menu-view, #about-view, #structured-view, #landing-view, #analytics-view, #exercises-view {
+        #menu-view, #about-view, #structured-view, #landing-view, #analytics-view, #exercises-view, #unstructured-view {
             display: none; /* Initially hide all views */
             padding: 20px;
             flex-grow: 1; /* Allow content to take up remaining space */
@@ -780,24 +778,24 @@
 
 
         .exercises .overlap {
-        position: absolute;
-        width: 124px;
-        height: 43px;
-        top: 9pх;
-        left: 1307px;
+            position: absolute;
+            width: 124px;
+            height: 43px;
+            top: 9pх;
+            left: 1307px;
         }
 
         .exercises .text-wrapper {
-        position: absolute;
-        top: 0;
-        left: 16pх;
-        font-family: "Montserrat-Bold", Helvetica;
-        font-weight: 700;
-        color: #000000;
-        font-size: 19.3px;
-        letter-spacing: 0;
-        line-height: 42.брх;
-        white-space: nowrap;
+            position: absolute;
+            top: 0;
+            left: 16pх;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 19.3px;
+            letter-spacing: 0;
+            line-height: 42.брх;
+            white-space: nowrap;
         }
 
         .exercises .polygon {
@@ -809,11 +807,11 @@
         }
 
         .exercises .img {
-        left: 90px;
-        position: absolute;
-        width: 34px;
-        height: 39px;
-        top: 3px;
+            left: 90px;
+            position: absolute;
+            width: 34px;
+            height: 39px;
+            top: 3px;
         }
 
         .exercises .text-wrapper-2 {
@@ -925,6 +923,7 @@
             height: 400px;
             top: 153px;
             left: 819px;
+            cursor: pointer;
             object-fit: cover;
         }
         .exercises .text-wrapper-6 {
@@ -939,6 +938,7 @@
             text-align: center;
             letter-spacing: 0;
             line-height: 66px;
+            cursor: pointer;
             white-space: nowrap;
         }
 
@@ -965,13 +965,167 @@
             left: 794px;
             object-fit: cover;
         }
+
+        .exercises .structured-click {
+            cursor: pointer;
+        }
+
+        .exercises .unstructured-click {
+            cursor: pointer;
+        }
+
+        .unstructured {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .unstructured .div {
+            background-color: #ffffff;
+            overflow: hidden;
+            width: 1440px;
+            height:1024px;
+            position: relative;
+        }
+
+        .unstructured .overlap-group {
+            position: absolute;
+            width: 1440px;
+            height: 67px;
+            top: 0;
+            left: 0;
+            background-color: #ead40e;
+        }
+
+        .unstructured .overlap {
+            position: absolute;
+            width: 1000px;
+            height: 100px;
+            top: 80px;
+            left: 800px;
+            font-family: "Montserrat-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 25px;
+            letter-spacing: 0;
+            line-height: 50px;
+        }
+
+        .unstructured .text-wrapper {
+            position: absolute;
+            top: 0;
+            left: 16px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 19.3px;
+            letter-spacing: 0;
+            line-height: 42.6px;
+            white-space: nowrap;
+        }
+
+        .unstructured .polygon {
+            left: 0;
+            position: absolute;
+            width: 34px;
+            height: 39px;
+            top: 3px;
+        }
+
+        .unstructured .img {
+            left: 90px;
+            position: absolute;
+            width: 34px;
+            height: 39px;
+            top: 3px;
+        }
+
+        .unstructured .text-wrapper-2 {
+            left: 16x;
+            position: absolute;
+            top: 0;
+            width: 30px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3px;
+            letter-spacing: 0;
+            line-height: 42.6px;
+            white-space: nowrap;
+        }
+
+        .unstructured .text-wrapper-3 {
+            left: 95x;
+            position: absolute;
+            top: 0;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #c310f0;
+            font-size: 19.3px;
+            letter-spacing: 0;
+            line-height: 42.6px;
+            white-space: nowrap;
+        }
+
+        .unstructured .menu-hamburger-web {
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            top: 5px;
+            left: 13px;
+            object-fit: cover;
+        }
+
+        .unstructured .frame {
+            position: absolute;
+            width: 1714px;
+            height: 759px;
+            top: 1783px;
+            left: -215px;
+            background-color: #ffffff;
+        }
+
+        .unstructured .line {
+            position: absolute;
+            width: 1000px;
+            height: 704px;
+            top: 305px;
+            left: 600px;
+        }
+        .unstructured .p {
+            position: absolute;
+            width: 717px;
+            top: 174px;
+            left: 629px;
+            font-family: "Montserrat-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 19.3px;
+            letter-spacing: 0;
+            line-height: 42.6px;
+        }
+
+        .unstructured .there-are-many {
+            position: absolute;
+            width: 482px;
+            top: 80;
+            left: 22px;
+            font-family: "Montserrat-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 25px;
+            letter-spacing: 0;
+            line-height: 66px;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
         <img id="menu-icon" class="menu-icon" src="https://ps.w.org/menu-organizer/assets/icon-256x256.jpg?rev=3202278" alt="Menu">
-        <div class="logo">TeenFit</div>
+        <img id="logo-icon" class="logo" src="./TeenFit_Logo.png"/>
     </header>
     <main class="main-content">
         <div id="menu-view" class="menu">
@@ -1000,7 +1154,7 @@
                     <div class="rectangle-5"></div>
                     <div class="text-wrapper-6">Structured</div>
                 </div>
-                <div class="overlap-group-1">
+                <div id="unstructured-menu-item" class="overlap-group-1">
                     <div class="rectangle-6"></div>
                     <div class="text-wrapper-6">Unstructured</div>
                 </div>
@@ -1095,13 +1249,34 @@
                 </p>
                 <div class="overlap-2">
                     <img class="rectangle" src="./Rectangle_11.svg"/>
-                    <div class="text-wrapper-4">Structured</div>
-                    <div class="text-wrapper-5">Unstructured</div>
+                    <div id="structured-select" class="structured-click">
+                        <div class="text-wrapper-4">Structured</div>
+                    </div>
+                    <div id="unstructured-select" class="unstructured-click">
+                        <div class="text-wrapper-5">Unstructured</div>
+                    </div>
                 </div>
-                <img class="structured-sport" src="./Structured_Sport_Example_1.png"/>
-                <div class="text-wrapper-6">Unstructured sport</div>
-                <div class="text-wrapper-7">Structured sport</div>
-                <img class="sructured-sport" src="./Sructured_Sport_Example_2.png">
+                    <img class="structured-sport" src="./Structured_Sport_Example_1.png"/>
+                    <div class="text-wrapper-6">Unstructured sport</div>
+                    <div class="text-wrapper-7">Structured sport</div>
+                    <img class="sructured-sport" src="./Sructured_Sport_Example_2.png">
+            </div>
+        </div>
+        <div id="unstructured-view" class="unstructured">
+            <div class="div">
+                <img class=line src="./Unstructured_Sheet.png"></div>
+                <p class="overlap">
+                    We recommend filling out this sheet over two-month intervals. 
+                    This is a great way to get some structured physical activity all the while 
+                    enjoying physical activity the way you like it. The distance between every entry
+                    into a certian row is two months and the certain cells that are marked in black
+                    do not need to be completed. 
+                </p>
+                <p class="there-are-many">
+                    There are many examples of unstructured exercise. Such as: <br />Casual walking and jogging<br />Playing a 
+                    pick-up game outside<br/>Going on a bike ride<br/>There is a recommendation that teens should have 60 minutes of physical activity per day. 
+                    By general standards, going and walking to school + some extra time outdoors would be enough to fill it! 
+                </p>
             </div>
         </div>
     </main>
@@ -1112,12 +1287,20 @@
         const teenfitMenuItem = document.getElementById('teenfit-menu-item'); // Add this line
         const analyticsMenuItem = document.getElementById('analytics-menu-item');
         const exercisesMenuItem = document.getElementById('exercises-menu-item');
+        const unstructuredMenuItem = document.getElementById('unstructured-menu-item');
+
         const menuView = document.getElementById('menu-view');
         const aboutView = document.getElementById('about-view');
         const structuredView = document.getElementById('structured-view');
         const landingView = document.getElementById('landing-view');
         const analyticsView = document.getElementById('analytics-view');
         const exercisesView = document.getElementById('exercises-view');
+        const unstructuredView = document.getElementById('unstructured-view');
+
+        const logoIcon = document.getElementById('logo-icon');
+
+        const exercisesStructuredItem = document.getElementById('structured-select');
+        const exercisesUnstructuredItem = document.getElementById('unstructured-select'); 
 
         // Initially show the landing view
         landingView.style.display = 'flex';
@@ -1126,22 +1309,28 @@
         structuredView.style.display = 'none';
         analyticsView.style.display = 'none';
         exercisesView.style.display = 'none';
+        unstructuredView.style.display = 'none';
 
-        function toggleView(showView, hideView1, hideView2, hideView3, hideView4, hideView5) {
+        function toggleView(showView, hideView1, hideView2, hideView3, hideView4, hideView5, hideView6) {
             showView.style.display = 'flex';
             hideView1.style.display = 'none';
             hideView2.style.display = 'none';
             hideView3.style.display = 'none';
             hideView4.style.display = 'none';
             hideView5.style.display = 'none';
+            hideView6.style.display = 'none';
         }
 
-        menuIcon.addEventListener('click', () => toggleView(menuView, aboutView, structuredView, landingView, analyticsView, exercisesView));
-        aboutMenuItem.addEventListener('click', () => toggleView(aboutView, menuView, structuredView, landingView, analyticsView, exercisesView));
-        structuredMenuItem.addEventListener('click', () => toggleView(structuredView, menuView, aboutView, landingView, analyticsView, exercisesView));
-        teenfitMenuItem.addEventListener('click', () => toggleView(landingView, menuView, aboutView, structuredView, analyticsView, exercisesView)); // Add this line
-        analyticsMenuItem.addEventListener('click', () => toggleView(analyticsView, menuView, aboutView, structuredView, landingView, exercisesView)); // Add this line
-        exercisesMenuItem.addEventListener('click', () => toggleView(exercisesView, menuView, aboutView, structuredView, landingView, analyticsView))
+        menuIcon.addEventListener('click', () => toggleView(menuView, aboutView, structuredView, landingView, analyticsView, exercisesView, unstructuredView));
+        aboutMenuItem.addEventListener('click', () => toggleView(aboutView, menuView, structuredView, landingView, analyticsView, exercisesView, unstructuredView));
+        structuredMenuItem.addEventListener('click', () => toggleView(structuredView, menuView, aboutView, landingView, analyticsView, exercisesView, unstructuredView));
+        teenfitMenuItem.addEventListener('click', () => toggleView(landingView, menuView, aboutView, structuredView, analyticsView, exercisesView, unstructuredView)); // Add this line
+        analyticsMenuItem.addEventListener('click', () => toggleView(analyticsView, menuView, aboutView, structuredView, landingView, exercisesView, unstructuredView)); // Add this line
+        exercisesMenuItem.addEventListener('click', () => toggleView(exercisesView, menuView, aboutView, structuredView, landingView, analyticsView, unstructuredView));
+        unstructuredMenuItem.addEventListener('click', () => toggleView(unstructuredView, menuView, aboutView, structuredView, landingView, analyticsView, exercisesView));
+        exercisesStructuredItem.addEventListener('click', () => toggleView(structuredView, menuView, aboutView, landingView, analyticsView, exercisesView, unstructuredView));
+        exercisesUnstructuredItem.addEventListener('click', () => toggleView(unstructuredView, menuView, aboutView, structuredView, landingView, analyticsView, exercisesView));
+        logoIcon.addEventListener('click', () => toggleView(landingView, menuView, aboutView, structuredView, analyticsView, exercisesView, unstructuredView));
     </script>
 </body>
 </html>
